@@ -1,0 +1,5 @@
+<div>
+    <div *ngFor="let x of candidates; let i = index">
+        <a (click)="showProfile(i)">{{x.name}}</a>
+    </div>
+</div>
