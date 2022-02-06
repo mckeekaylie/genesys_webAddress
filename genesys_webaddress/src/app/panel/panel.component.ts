@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Person } from 'src/shared/models/person.model';
 import { PeopleServiceService } from 'src/shared/services/people-service.service';
-import { faAddressBook, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faAddressBook, faSortAmountUp, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'panel',
@@ -13,8 +13,8 @@ export class PanelComponent implements OnInit {
   entriesAlphabetical!: Array<Person>;
   @Output() personSelected: EventEmitter<Person> = new EventEmitter();
   faAddressBook = faAddressBook;
-  faSortUp = faSortUp;
-  faSortDown = faSortDown;
+  faSortAmountUp = faSortAmountUp;
+  faSortAmountDown = faSortAmountDown;
 
   constructor(private peopleService: PeopleServiceService){}
 
@@ -61,13 +61,11 @@ export class PanelComponent implements OnInit {
   }
 
   filter(event: any) {
-    console.log(event.target.value)
-    console.log(this.entriesAlphabetical)
-    for(let i = 0; i < this.entriesAlphabetical.length; i++){
-      let name = this.entriesAlphabetical[i].name
-      if(name.includes(event.target.value.toString())){
-        console.log('yes')
-      }
+    let search = event.target.value.toString().toUpperCase();
+    if(search) {
+      this.entriesAlphabetical = this.entriesAlphabetical.filter(x => x.name.toUpperCase().includes(search));
+    } else {
+      this.getPeopleDetails();
     }
   }
 }

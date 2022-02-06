@@ -5,4 +5,5 @@ export interface Person {
     education: Education [];
     name: string;
     workExperience: WorkExperience [];
+    image: string;
 }

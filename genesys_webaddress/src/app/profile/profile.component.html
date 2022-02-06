@@ -1,7 +1,7 @@
 <div class="profile p-4">
-    <div *ngIf="personToShow != null">
+    <div *ngIf="personToShow">
         <div class="d-flex align-items-center">
-            <img src="../../assets/avatar.png" class="avatar"/>
+            <img src="{{personToShow.image}}" class="avatar" alt="{{personToShow.name}}"/>
             <h1 class="ps-4">{{personToShow.name}}</h1>
         </div>
         <br class="clear" />
@@ -24,7 +24,7 @@
             </ul>
         </div>
     </div>
-    <div *ngIf="personToShow == null">
-        <h1>Select a name from the left menu to view their profile!</h1>
+    <div *ngIf="!personToShow">
+        <h2 class="text-center px-4">Select a name from the left menu to view their profile!</h2>
     </div>
 </div>
