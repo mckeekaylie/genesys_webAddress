@@ -1,0 +1,16 @@
+.panel {
+    background-color: #99CCFF;
+    height: 100vh;
+}
+
+.nameLink {
+    height: 50px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, .5);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.namesContainer {
+    margin-top: 20px;
+}

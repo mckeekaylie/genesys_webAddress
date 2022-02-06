@@ -1,3 +1,30 @@
-<div>
-    <h1>{{candidateToShow.name}}</h1>
+<div class="profile p-4">
+    <div *ngIf="personToShow != null">
+        <div class="d-flex align-items-center">
+            <img src="../../assets/avatar.png" class="avatar"/>
+            <h1 class="ps-4">{{personToShow.name}}</h1>
+        </div>
+        <br class="clear" />
+        <h3><fa-icon [icon]="faGraduationCap"></fa-icon> Education</h3>
+        <div *ngFor="let education of personToShow.education; let i = index;">
+            <h5>{{personToShow.education[i].institution}}</h5>
+            <ul>
+                <li>Degree: {{personToShow.education[i].degree}}</li>
+                <li>Start year: {{personToShow.education[i].startYear}}</li>
+                <li>End year: {{personToShow.education[i].endYear}}</li>
+            </ul>
+        </div>
+        <hr>
+        <h3><fa-icon [icon]="faBriefcase"></fa-icon> Experience</h3>
+        <div *ngFor="let job of personToShow.workExperience; let i = index;">
+            <h5>{{personToShow.workExperience[i].institution}}</h5>
+            <ul>
+                <li>Start year: {{personToShow.workExperience[i].startYear}}</li>
+                <li>Title: {{personToShow.workExperience[i].title}}</li>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="personToShow == null">
+        <h1>Select a name from the left menu to view their profile!</h1>
+    </div>
 </div>

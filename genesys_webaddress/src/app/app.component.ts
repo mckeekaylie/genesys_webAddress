@@ -1,18 +1,22 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NumberValueAccessor } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Person } from 'src/shared/models/person.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'genesys_webaddress'
-  @Input() id!: number;
-  // @Output() idToProfile: EventEmitter<Number> = new EventEmitter();
- idToProfile = 0;
-  getProfile(id: any){
-    console.log(id)
-    this.idToProfile = id;
+  personToShow!: Person;
+
+  constructor(){}
+
+  ngOnInit(): void {
+     this.getProfile(0);
+  }
+
+  getProfile(person: any){
+    this.personToShow = person;
   }
 }
